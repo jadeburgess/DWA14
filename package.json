@@ -1,0 +1,16 @@
+{
+  "name": "dwa14",
+  "version": "1.0.0",
+  "description": "",
+  "main": "scripts.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "lit": "^2.7.6",
+    "lit-element": "^3.3.2"
+  }
+}
