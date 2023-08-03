@@ -1,143 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Tally Count (Lit)</title>
- 
-  <link rel="stylesheet" href="stylesheet.css">
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap" rel="stylesheet">
-
-  <!-- Import LitElement and other modules -->
-  <script type="module">
-    import { css, html, LitElement } from 'https://cdn.jsdelivr.net/npm/lit@2.0.0';
-
-    // Your MyTallyCounter component code here
-    const MAX_NUMBER = 15;
-    const MIN_NUMBER = -5;
-
-    class MyTallyCounter extends LitElement {
-      static styles = css`
-        /* Add your styles here if needed */
-        header {
-          text-align: center;
-        }
-
-        .counter {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          flex-direction: column;
-          margin-top: 20px;
-        }
-
-        .counter__value {
-          font-size: 24px;
-          font-weight: bold;
-          text-align: center;
-          width: 100px;
-        }
-
-        .counter__actions {
-          margin-top: 10px;
-        }
-
-        .counter__button {
-          font-size: 24px;
-          padding: 10px 20px;
-          cursor: pointer;
-        }
-
-        .counter__button-first {
-          margin-right: 10px;
-        }
-
-        .footer {
-          text-align: center;
-          margin-top: 30px;
-        }
-      `;
-
-      static properties = {
-        counterValue: { type: Number },
-        isMinimumReached: { type: Boolean },
-        isMaximumReached: { type: Boolean },
-      };
-
-      constructor() {
-        super();
-        this.counterValue = 0;
-        this.isMinimumReached = false;
-        this.isMaximumReached = false;
-      }
-
-      incrementCounter() {
-        const newValue = this.counterValue + 1;
-        this.counterValue = newValue;
-        this.checkMinMaxState();
-      }
-
-      decrementCounter() {
-        const newValue = this.counterValue - 1;
-        this.counterValue = newValue;
-        this.checkMinMaxState();
-      }
-
-      checkMinMaxState() {
-        this.isMinimumReached = this.counterValue <= MIN_NUMBER;
-        this.isMaximumReached = this.counterValue >= MAX_NUMBER;
-      }
-
-      render() {
-        return html`
-          <header class="header">
-            <h1 class="header__title">Tally Count (Lit)</h1>
-          </header>
-          <main class="counter">
-            <input
-              class="counter__value"
-              data-key="number"
-              type="number"
-              .value=${this.counterValue}
-              readonly
-            />
-            <div class="counter__actions">
-              <button
-                @click=${this.decrementCounter}
-                ?disabled=${this.isMinimumReached}
-                class="counter__button counter__button-first"
-              >
-                -
-              </button>
-              <button
-                @click=${this.incrementCounter}
-                ?disabled=${this.isMaximumReached}
-                class="counter__button"
-              >
-                +
-              </button>
-            </div>
-          </main>
-          <footer class="footer">
-            <span class="footer__text">
-              Inspired by <a class="footer__link" href="https://tallycount.app/">Tally Count</a>.
-              Note that this is merely a practice project for learning Lit.
-            </span>
-          </footer>
-        `;
-      }
-    }
-
-    customElements.define('my-tally-counter', MyTallyCounter);
-  </script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="https://unpkg.com/lit-html@2.7.4/lit-html.js?module" defer type="module"></script>
+    <script src="./scripts.js" defer type="module"></script>
+    <title>Tally App</title>
 </head>
 <body>
-  <my-tally-counter></my-tally-counter>
+  <tally-count></tally-count>
 </body>
 </html>
